@@ -21,5 +21,3 @@ coverage.xml
 pkgs/jsonToXml/failedXml.xml
 
 pkgs/jsonToXml/successTest.xml
-
-pkgs/projectVersion/DefaultGame.ini
