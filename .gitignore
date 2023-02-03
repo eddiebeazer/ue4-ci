@@ -18,11 +18,7 @@
 
 coverage.xml
 
-pkgs/jsonToXml/failedTest.json
-
 pkgs/jsonToXml/failedXml.xml
-
-pkgs/jsonToXml/successTest.json
 
 pkgs/jsonToXml/successTest.xml
 
