@@ -13,3 +13,17 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+.idea/
+
+coverage.xml
+
+pkgs/jsonToXml/failedTest.json
+
+pkgs/jsonToXml/failedXml.xml
+
+pkgs/jsonToXml/successTest.json
+
+pkgs/jsonToXml/successTest.xml
+
+pkgs/projectVersion/DefaultGame.ini
