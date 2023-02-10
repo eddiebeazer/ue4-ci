@@ -1,9 +1,11 @@
 package jsonToXml
 
 import (
+	"bytes"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"github.com/dimchansky/utfbom"
 	"github.com/urfave/cli/v2"
 	"io/ioutil"
 )
@@ -66,14 +68,19 @@ type TestEvent struct {
 }
 
 func ParseTestOutput(jsonFilePath string, outPath string, testSuiteName string) error {
-	jsonFile, err := ioutil.ReadFile(jsonFilePath)
+	jsonData, err := ioutil.ReadFile(jsonFilePath)
 	if err != nil {
 		return cli.Exit(fmt.Errorf("error reading json file: %s", err), 1)
 	}
 
+	jsonDataWithoutBom, err := ioutil.ReadAll(utfbom.SkipOnly(bytes.NewReader(jsonData)))
+	if err != nil {
+		return cli.Exit(fmt.Errorf("failed to remove bom from json file: %s", err), 1)
+	}
+
 	testResults := AutomationTestJson{}
 
-	err = json.Unmarshal(jsonFile, &testResults)
+	err = json.Unmarshal(jsonDataWithoutBom, &testResults)
 	if err != nil {
 		return cli.Exit(fmt.Errorf("error unmarshalling json file: %s", err), 1)
 	}

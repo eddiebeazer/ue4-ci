@@ -18,6 +18,7 @@ func TestSetVersion(t *testing.T) {
 func TestGetVersion(t *testing.T) {
 	expectedVersion := "5.3.2"
 	err := ManuallySetVersion(expectedVersion, defaultGameIniPath)
+	assert.Nil(t, err)
 	version, err := GetVersion(defaultGameIniPath)
 	assert.Nil(t, err)
 	assert.Equal(t, expectedVersion, version)
