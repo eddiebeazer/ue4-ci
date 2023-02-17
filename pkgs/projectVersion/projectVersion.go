@@ -114,7 +114,12 @@ func SetVersionWithPerforce(devVersion string, relVersion string, branch string,
 	}
 
 	// printing the string to standard output
-	fmt.Printf(newVersionNumber)
+	if currentVersion == relVersion {
+		fmt.Printf("##teamcity[setParameter name='REL_VERSION' value='%s']", newVersionNumber)
+	} else {
+		fmt.Printf("##teamcity[setParameter name='DEV_VERSION' value='%s']", newVersionNumber)
+	}
+
 	return newVersionNumber, nil
 }
 
