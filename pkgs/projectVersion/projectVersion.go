@@ -3,6 +3,7 @@ package projectVersion
 import (
 	"fmt"
 	"github.com/urfave/cli/v2"
+	"os"
 	"strconv"
 	"strings"
 
@@ -114,10 +115,11 @@ func SetVersionWithPerforce(devVersion string, relVersion string, branch string,
 	}
 
 	// printing the string to standard output
+	w := os.Stdout
 	if currentVersion == relVersion {
-		fmt.Printf("##teamcity[setParameter name='REL_VERSION' value='%s']", newVersionNumber)
+		_, err = fmt.Fprintf(w, "##teamcity[setParameter name='REL_VERSION' value='%s']", newVersionNumber)
 	} else {
-		fmt.Printf("##teamcity[setParameter name='DEV_VERSION' value='%s']", newVersionNumber)
+		_, err = fmt.Fprintf(w, "##teamcity[setParameter name='DEV_VERSION' value='%s']", newVersionNumber)
 	}
 
 	return newVersionNumber, nil
