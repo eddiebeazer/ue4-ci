@@ -95,14 +95,14 @@ func main() {
 								Flags: []cli.Flag{
 									&cli.StringFlag{
 										Name:     "relVersion",
-										Aliases:  []string{"s"},
+										Aliases:  []string{"rv"},
 										Value:    "",
 										Usage:    "Current release version of the project",
 										Required: true,
 									},
 									&cli.StringFlag{
 										Name:     "devVersion",
-										Aliases:  []string{"s"},
+										Aliases:  []string{"dv"},
 										Value:    "",
 										Usage:    "Current dev version of the project",
 										Required: true,
