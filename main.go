@@ -94,6 +94,13 @@ func main() {
 									"and then provide them as parameters.  The new sem ver version will be spit out at the end.",
 								Flags: []cli.Flag{
 									&cli.StringFlag{
+										Name:     "relVersion",
+										Aliases:  []string{"s"},
+										Value:    "",
+										Usage:    "Current release version of the project",
+										Required: true,
+									},
+									&cli.StringFlag{
 										Name:     "devVersion",
 										Aliases:  []string{"d"},
 										Value:    "",
@@ -105,6 +112,13 @@ func main() {
 										Aliases:  []string{"b"},
 										Value:    "",
 										Usage:    "Branch of the build",
+										Required: true,
+									},
+									&cli.StringFlag{
+										Name:     "iniPath",
+										Aliases:  []string{"i"},
+										Value:    "",
+										Usage:    "file path to the DefaultGame ini file",
 										Required: true,
 									},
 								},
@@ -120,10 +134,10 @@ func main() {
 						},
 						Flags: []cli.Flag{
 							&cli.StringFlag{
-								Name:     "relVersion",
+								Name:     "setVersion",
 								Aliases:  []string{"s"},
 								Value:    "",
-								Usage:    "Current release version of the project",
+								Usage:    "Version to set in Project",
 								Required: true,
 							},
 							&cli.StringFlag{
