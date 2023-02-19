@@ -83,7 +83,7 @@ func ParseReport(jsonFilePath string) error {
 			_, err = fmt.Fprintf(w, "##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n"))
 		}
 		if len(warnings) > 0 {
-			_, err = fmt.Fprintf(w, "##teamcity[testFailed name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))
+			_, err = fmt.Fprintf(w, "##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))
 		}
 
 		_, err = fmt.Fprintf(w, "##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath)
