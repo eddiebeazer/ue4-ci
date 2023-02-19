@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/eddiebeazer/ue4-ci/pkgs/clean"
 	"github.com/eddiebeazer/ue4-ci/pkgs/jsonToXml"
+	"github.com/eddiebeazer/ue4-ci/pkgs/parseLintReport"
 	"github.com/eddiebeazer/ue4-ci/pkgs/projectVersion"
 	"log"
 	"os"
@@ -24,6 +25,30 @@ func main() {
 			},
 		},
 		Commands: []*cli.Command{
+
+			{
+				Name:  "teamcity",
+				Usage: "Commands that help with team city builds",
+				Subcommands: []*cli.Command{
+					{
+						Name:  "parseLintReport",
+						Usage: "Converts Linter V2 output json to team city report",
+						Flags: []cli.Flag{
+							&cli.StringFlag{
+								Name:     "json",
+								Aliases:  []string{"j"},
+								Value:    "",
+								Usage:    "Location of the linter v2 json",
+								Required: true,
+							},
+						},
+						Action: func(cCtx *cli.Context) error {
+							json := cCtx.String("json")
+							return parseLintReport.ParseReport(json)
+						},
+					},
+				},
+			},
 			{
 				Name:  "clean",
 				Usage: "Deletes build files from the project",

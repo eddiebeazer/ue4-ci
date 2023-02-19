@@ -1,0 +1,625 @@
+{
+	"Violators": [
+		{
+			"ViolatorAssetName": "PA_Mannequin",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/PA_Mannequin.PA_Mannequin",
+			"ViolatorFullName": "/Script/Engine.PhysicsAsset /Game/EdgemaulRising/Characters/Mannequins/Rigs/PA_Mannequin.PA_Mannequin",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [PHYS_Mannequin]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "CR_Mannequin_Body",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+			"ViolatorFullName": "/Script/ControlRigDeveloper.ControlRigBlueprint /Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+			"Violations": [
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.3 No Function Should Have More Than 55 Nodes",
+					"RuleDesc": "Simply, no function should have more than 55 nodes. Any function this big should be broken down into smaller functions for readability and ease of maintenance.",
+					"RuleURL": "http://ue4.style#3.3.3",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please simply function Setup Arm as it has 59 nodes when we want a max of 50.\r\nPlease simply function Forward Arm as it has 60 nodes when we want a max of 50.\r\nPlease simply function Forward Foot as it has 57 nodes when we want a max of 50.\r\nPlease simply function Forward Reverse Foot as it has 77 nodes when we want a max of 50.\r\nPlease simply function Forward Spine as it has 56 nodes when we want a max of 50.\r\nPlease simply function Forward Neck as it has 60 nodes when we want a max of 50."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.2 All Functions Must Have Return Nodes",
+					"RuleDesc": "All functions must have return nodes, no exceptions.",
+					"RuleURL": "http://ue4.style#3.3.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please give function Get Negative Transform a return node.\r\nPlease give function Setup Arm a return node.\r\nPlease give function Setup Clavicle a return node.\r\nPlease give function Setup Fingers a return node.\r\nPlease give function Setup Leg a return node.\r\nPlease give function Setup Foot a return node.\r\nPlease give function Forward Arm a return node.\r\nPlease give function Forward Fingers a return node.\r\nPlease give function Forward Clavicle a return node.\r\nPlease give function Forward Leg a return node.\r\nPlease give function Forward Foot a return node.\r\nPlease give function Set IKFK Visibility a return node.\r\nPlease give function Backward Spine a return node.\r\nPlease give function Backward Neck a return node.\r\nPlease give function Backward Clavicle a return node.\r\nPlease give function Backward Arm a return node.\r\nPlease give function Backward Fingers a return node.\r\nPlease give function Backward Leg a return node.\r\nPlease give function Backward Foot a return node.\r\nPlease give function FK Point At a return node.\r\nPlease give function Match 2 Bones IK onto FK a return node.\r\nPlease give function IK 2 Bones a return node.\r\nPlease give function Project to New Parents a return node.\r\nPlease give function Set IKFK Keys a return node.\r\nPlease give function Setup Reverse Foot a return node.\r\nPlease give function Forward Reverse Foot a return node.\r\nPlease give function BSpline Passing thru 4 Points a return node.\r\nPlease give function Setup Spine a return node.\r\nPlease give function Forward Spine a return node.\r\nPlease give function Setup Neck a return node.\r\nPlease give function Forward Neck a return node.\r\nPlease give function Spine Match IK onto FK a return node."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.1.2 Variables - PascalCase",
+					"RuleDesc": "All blueprint variables should be in PascalCase. Booleans should start with a lowercase b.",
+					"RuleURL": "http://ue4.style#3.2.1.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please fix variable named L Arm IK Mode.\r\nPlease fix variable named R Arm IK Mode.\r\nPlease fix variable named L Leg IK Mode .\r\nPlease fix variable named R Leg IK Mode.\r\nPlease fix variable named Spine IK Mode.\r\nPlease fix variable named Neck IK Mode."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "CR_Mannequin_Body",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+			"ViolatorFullName": "/Script/ControlRigDeveloper.ControlRigBlueprint /Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+			"Violations": [
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.3 No Function Should Have More Than 55 Nodes",
+					"RuleDesc": "Simply, no function should have more than 55 nodes. Any function this big should be broken down into smaller functions for readability and ease of maintenance.",
+					"RuleURL": "http://ue4.style#3.3.3",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please simply function Setup Arm as it has 59 nodes when we want a max of 50.\r\nPlease simply function Forward Arm as it has 60 nodes when we want a max of 50.\r\nPlease simply function Forward Foot as it has 57 nodes when we want a max of 50.\r\nPlease simply function Forward Reverse Foot as it has 77 nodes when we want a max of 50.\r\nPlease simply function Forward Spine as it has 56 nodes when we want a max of 50.\r\nPlease simply function Forward Neck as it has 60 nodes when we want a max of 50."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.2 All Functions Must Have Return Nodes",
+					"RuleDesc": "All functions must have return nodes, no exceptions.",
+					"RuleURL": "http://ue4.style#3.3.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please give function Get Negative Transform a return node.\r\nPlease give function Setup Arm a return node.\r\nPlease give function Setup Clavicle a return node.\r\nPlease give function Setup Fingers a return node.\r\nPlease give function Setup Leg a return node.\r\nPlease give function Setup Foot a return node.\r\nPlease give function Forward Arm a return node.\r\nPlease give function Forward Fingers a return node.\r\nPlease give function Forward Clavicle a return node.\r\nPlease give function Forward Leg a return node.\r\nPlease give function Forward Foot a return node.\r\nPlease give function Set IKFK Visibility a return node.\r\nPlease give function Backward Spine a return node.\r\nPlease give function Backward Neck a return node.\r\nPlease give function Backward Clavicle a return node.\r\nPlease give function Backward Arm a return node.\r\nPlease give function Backward Fingers a return node.\r\nPlease give function Backward Leg a return node.\r\nPlease give function Backward Foot a return node.\r\nPlease give function FK Point At a return node.\r\nPlease give function Match 2 Bones IK onto FK a return node.\r\nPlease give function IK 2 Bones a return node.\r\nPlease give function Project to New Parents a return node.\r\nPlease give function Set IKFK Keys a return node.\r\nPlease give function Setup Reverse Foot a return node.\r\nPlease give function Forward Reverse Foot a return node.\r\nPlease give function BSpline Passing thru 4 Points a return node.\r\nPlease give function Setup Spine a return node.\r\nPlease give function Forward Spine a return node.\r\nPlease give function Setup Neck a return node.\r\nPlease give function Forward Neck a return node.\r\nPlease give function Spine Match IK onto FK a return node."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.1.2 Variables - PascalCase",
+					"RuleDesc": "All blueprint variables should be in PascalCase. Booleans should start with a lowercase b.",
+					"RuleURL": "http://ue4.style#3.2.1.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please fix variable named L Arm IK Mode.\r\nPlease fix variable named R Arm IK Mode.\r\nPlease fix variable named L Leg IK Mode .\r\nPlease fix variable named R Leg IK Mode.\r\nPlease fix variable named Spine IK Mode.\r\nPlease fix variable named Neck IK Mode."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "CR_Mannequin_Body",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+			"ViolatorFullName": "/Script/ControlRigDeveloper.ControlRigBlueprint /Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_Body.CR_Mannequin_Body",
+			"Violations": [
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.3 No Function Should Have More Than 55 Nodes",
+					"RuleDesc": "Simply, no function should have more than 55 nodes. Any function this big should be broken down into smaller functions for readability and ease of maintenance.",
+					"RuleURL": "http://ue4.style#3.3.3",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please simply function Setup Arm as it has 59 nodes when we want a max of 50.\r\nPlease simply function Forward Arm as it has 60 nodes when we want a max of 50.\r\nPlease simply function Forward Foot as it has 57 nodes when we want a max of 50.\r\nPlease simply function Forward Reverse Foot as it has 77 nodes when we want a max of 50.\r\nPlease simply function Forward Spine as it has 56 nodes when we want a max of 50.\r\nPlease simply function Forward Neck as it has 60 nodes when we want a max of 50."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.2 All Functions Must Have Return Nodes",
+					"RuleDesc": "All functions must have return nodes, no exceptions.",
+					"RuleURL": "http://ue4.style#3.3.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please give function Get Negative Transform a return node.\r\nPlease give function Setup Arm a return node.\r\nPlease give function Setup Clavicle a return node.\r\nPlease give function Setup Fingers a return node.\r\nPlease give function Setup Leg a return node.\r\nPlease give function Setup Foot a return node.\r\nPlease give function Forward Arm a return node.\r\nPlease give function Forward Fingers a return node.\r\nPlease give function Forward Clavicle a return node.\r\nPlease give function Forward Leg a return node.\r\nPlease give function Forward Foot a return node.\r\nPlease give function Set IKFK Visibility a return node.\r\nPlease give function Backward Spine a return node.\r\nPlease give function Backward Neck a return node.\r\nPlease give function Backward Clavicle a return node.\r\nPlease give function Backward Arm a return node.\r\nPlease give function Backward Fingers a return node.\r\nPlease give function Backward Leg a return node.\r\nPlease give function Backward Foot a return node.\r\nPlease give function FK Point At a return node.\r\nPlease give function Match 2 Bones IK onto FK a return node.\r\nPlease give function IK 2 Bones a return node.\r\nPlease give function Project to New Parents a return node.\r\nPlease give function Set IKFK Keys a return node.\r\nPlease give function Setup Reverse Foot a return node.\r\nPlease give function Forward Reverse Foot a return node.\r\nPlease give function BSpline Passing thru 4 Points a return node.\r\nPlease give function Setup Spine a return node.\r\nPlease give function Forward Spine a return node.\r\nPlease give function Setup Neck a return node.\r\nPlease give function Forward Neck a return node.\r\nPlease give function Spine Match IK onto FK a return node."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.1.2 Variables - PascalCase",
+					"RuleDesc": "All blueprint variables should be in PascalCase. Booleans should start with a lowercase b.",
+					"RuleURL": "http://ue4.style#3.2.1.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please fix variable named L Arm IK Mode.\r\nPlease fix variable named R Arm IK Mode.\r\nPlease fix variable named L Leg IK Mode .\r\nPlease fix variable named R Leg IK Mode.\r\nPlease fix variable named Spine IK Mode.\r\nPlease fix variable named Neck IK Mode."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "CR_Mannequin_BasicFootIK",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.CR_Mannequin_BasicFootIK",
+			"ViolatorFullName": "/Script/ControlRigDeveloper.ControlRigBlueprint /Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.CR_Mannequin_BasicFootIK",
+			"Violations": [
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.2 All Functions Must Have Return Nodes",
+					"RuleDesc": "All functions must have return nodes, no exceptions.",
+					"RuleURL": "http://ue4.style#3.3.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please give function FootTrace a return node."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.2.1 Tooltips",
+					"RuleDesc": "All Editable variables, including those marked editable just so they can be marked as Expose On Spawn, should have a description in their Tooltip fields that explains how changing this value affects the behavior of the blueprint.",
+					"RuleURL": "http://ue4.style#3.2.2.1",
+					"RuleSeverity": 1,
+					"RuleRecommendedAction": "Please give variable ShouldDoIKTrace a tooltip as it is marked editable."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.1.2 Variables - PascalCase",
+					"RuleDesc": "All blueprint variables should be in PascalCase. Booleans should start with a lowercase b.",
+					"RuleURL": "http://ue4.style#3.2.1.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please fix variable named ShouldDoIKTrace."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "CR_Mannequin_BasicFootIK",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.CR_Mannequin_BasicFootIK",
+			"ViolatorFullName": "/Script/ControlRigDeveloper.ControlRigBlueprint /Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.CR_Mannequin_BasicFootIK",
+			"Violations": [
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.2 All Functions Must Have Return Nodes",
+					"RuleDesc": "All functions must have return nodes, no exceptions.",
+					"RuleURL": "http://ue4.style#3.3.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please give function FootTrace a return node."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.2.1 Tooltips",
+					"RuleDesc": "All Editable variables, including those marked editable just so they can be marked as Expose On Spawn, should have a description in their Tooltip fields that explains how changing this value affects the behavior of the blueprint.",
+					"RuleURL": "http://ue4.style#3.2.2.1",
+					"RuleSeverity": 1,
+					"RuleRecommendedAction": "Please give variable ShouldDoIKTrace a tooltip as it is marked editable."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.1.2 Variables - PascalCase",
+					"RuleDesc": "All blueprint variables should be in PascalCase. Booleans should start with a lowercase b.",
+					"RuleURL": "http://ue4.style#3.2.1.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please fix variable named ShouldDoIKTrace."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "CR_Mannequin_BasicFootIK",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.CR_Mannequin_BasicFootIK",
+			"ViolatorFullName": "/Script/ControlRigDeveloper.ControlRigBlueprint /Game/EdgemaulRising/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.CR_Mannequin_BasicFootIK",
+			"Violations": [
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.3.2 All Functions Must Have Return Nodes",
+					"RuleDesc": "All functions must have return nodes, no exceptions.",
+					"RuleURL": "http://ue4.style#3.3.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please give function FootTrace a return node."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.2.1 Tooltips",
+					"RuleDesc": "All Editable variables, including those marked editable just so they can be marked as Expose On Spawn, should have a description in their Tooltip fields that explains how changing this value affects the behavior of the blueprint.",
+					"RuleURL": "http://ue4.style#3.2.2.1",
+					"RuleSeverity": 1,
+					"RuleRecommendedAction": "Please give variable ShouldDoIKTrace a tooltip as it is marked editable."
+				},
+				{
+					"RuleGroup": "Blueprints",
+					"RuleTitle": "3.2.1.2 Variables - PascalCase",
+					"RuleDesc": "All blueprint variables should be in PascalCase. Booleans should start with a lowercase b.",
+					"RuleURL": "http://ue4.style#3.2.1.2",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Please fix variable named ShouldDoIKTrace."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_upperarm_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_r_anim.Manny_upperarm_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_r_anim.Manny_upperarm_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_upperarm_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_upperarm_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_l_anim.Manny_upperarm_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_upperarm_l_anim.Manny_upperarm_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_upperarm_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_thigh_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_r_anim.Manny_thigh_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_r_anim.Manny_thigh_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_thigh_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_thigh_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_l_anim.Manny_thigh_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_thigh_l_anim.Manny_thigh_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_thigh_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_lowerarm_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_r_anim.Manny_lowerarm_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_r_anim.Manny_lowerarm_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_lowerarm_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_lowerarm_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_l_anim.Manny_lowerarm_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_lowerarm_l_anim.Manny_lowerarm_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_lowerarm_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_hand_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_r_anim.Manny_hand_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_r_anim.Manny_hand_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_hand_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_hand_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_l_anim.Manny_hand_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_hand_l_anim.Manny_hand_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_hand_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_foot_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_r_anim.Manny_foot_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_r_anim.Manny_foot_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_foot_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_foot_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_l_anim.Manny_foot_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_foot_l_anim.Manny_foot_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_foot_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_clavicle_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_r_anim.Manny_clavicle_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_r_anim.Manny_clavicle_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_clavicle_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_clavicle_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_l_anim.Manny_clavicle_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_clavicle_l_anim.Manny_clavicle_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_clavicle_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_calf_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_r_anim.Manny_calf_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_r_anim.Manny_calf_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_calf_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Manny_calf_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_l_anim.Manny_calf_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Manny/Manny_calf_l_anim.Manny_calf_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Manny_calf_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_upperarm_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_r_anim.Quinn_upperarm_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_r_anim.Quinn_upperarm_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_upperarm_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_upperarm_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_l_anim.Quinn_upperarm_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_upperarm_l_anim.Quinn_upperarm_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_upperarm_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_thigh_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_r_anim.Quinn_thigh_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_r_anim.Quinn_thigh_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_thigh_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_thigh_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_l_anim.Quinn_thigh_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_thigh_l_anim.Quinn_thigh_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_thigh_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_lowerarm_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_r_anim.Quinn_lowerarm_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_r_anim.Quinn_lowerarm_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_lowerarm_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_lowerarm_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_l_anim.Quinn_lowerarm_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_lowerarm_l_anim.Quinn_lowerarm_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_lowerarm_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_hand_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_r_anim.Quinn_hand_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_r_anim.Quinn_hand_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_hand_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_hand_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_l_anim.Quinn_hand_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_hand_l_anim.Quinn_hand_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_hand_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_foot_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_r_anim.Quinn_foot_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_r_anim.Quinn_foot_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_foot_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_foot_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_l_anim.Quinn_foot_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_foot_l_anim.Quinn_foot_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_foot_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_clavicle_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_r_anim.Quinn_clavicle_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_r_anim.Quinn_clavicle_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_clavicle_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_clavicle_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_l_anim.Quinn_clavicle_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_clavicle_l_anim.Quinn_clavicle_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_clavicle_l_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_calf_r_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_r_anim.Quinn_calf_r_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_r_anim.Quinn_calf_r_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_calf_r_anim]."
+				}
+			]
+		},
+		{
+			"ViolatorAssetName": "Quinn_calf_l_anim",
+			"ViolatorAssetPath": "/Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_l_anim.Quinn_calf_l_anim",
+			"ViolatorFullName": "/Script/Engine.AnimSequence /Game/EdgemaulRising/Characters/Mannequins/Rigs/Poses/Quinn/Quinn_calf_l_anim.Quinn_calf_l_anim",
+			"Violations": [
+				{
+					"RuleGroup": "Asset Naming Conventions",
+					"RuleTitle": "1. Asset Naming Conventions",
+					"RuleDesc": "All assets should have a Base Asset Name. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the the standard of Prefix_BaseAssetName_Variant_Suffix.",
+					"RuleURL": "http://ue4.style#1",
+					"RuleSeverity": 0,
+					"RuleRecommendedAction": "Recommended name: [A_Quinn_calf_l_anim]."
+				}
+			]
+		}
+	]
+}
