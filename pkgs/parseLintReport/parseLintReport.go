@@ -30,6 +30,21 @@ type Violation struct {
 	RuleRecommendedAction string `json:"RuleRecommendedAction"`
 }
 
+func EscapeTeamCityString(str string) string {
+	newString := strings.Replace(str, "|", "||", -1)
+	newString = strings.Replace(str, "'", "|'", -1)
+	newString = strings.Replace(str, "\u2019", "|'", -1)
+	newString = strings.Replace(str, "\u2018", "|'", -1)
+	newString = strings.Replace(str, "\r", "|r", -1)
+	newString = strings.Replace(str, "\n", "|n", -1)
+	newString = strings.Replace(str, "]", "|]", -1)
+	newString = strings.Replace(str, "[", "|[", -1)
+	newString = strings.Replace(str, "\u0085", "|x", -1)
+	newString = strings.Replace(str, "\u2028", "|l", -1)
+	newString = strings.Replace(str, "\u2029", "|p", -1)
+	return newString
+}
+
 func ParseReport(jsonFilePath string) error {
 	jsonData, err := ioutil.ReadFile(jsonFilePath)
 	if err != nil {
@@ -80,10 +95,12 @@ func ParseReport(jsonFilePath string) error {
 			}
 		}
 		if len(errors) > 0 {
-			_, err = fmt.Fprintf(w, "##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n"))
+			errorString := EscapeTeamCityString(fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n")))
+			_, err = fmt.Fprintf(w, errorString)
 		}
 		if len(warnings) > 0 {
-			_, err = fmt.Fprintf(w, "##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))
+			warningString := EscapeTeamCityString(fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n")))
+			_, err = fmt.Fprintf(w, warningString)
 		}
 
 		_, err = fmt.Fprintf(w, "##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath)
