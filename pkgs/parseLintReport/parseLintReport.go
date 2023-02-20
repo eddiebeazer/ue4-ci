@@ -75,10 +75,10 @@ func ParseReport(jsonFilePath string) error {
 
 		for _, violation := range violator.Violations {
 			escapedTitle := EscapeTeamCityString(violation.RuleTitle)
-			// escapedDescription := EscapeTeamCityString(violation.RuleDesc)
-			//escapedAssetPath := EscapeTeamCityString(violator.ViolatorAssetPath)
+			escapedDescription := EscapeTeamCityString(violation.RuleDesc)
+			escapedAssetPath := EscapeTeamCityString(violator.ViolatorAssetPath)
 
-			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspectionType id='%s' category='%s' name='%s' description='%s']\n", escapedTitle, "Lint Results", escapedTitle, "Lint Results"))
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspectionType id='%s' category='%s' name='%s' description='%s']\n", escapedTitle, "Lint Results", escapedTitle, escapedDescription))
 			if err != nil {
 				return err
 			}
@@ -104,7 +104,7 @@ func ParseReport(jsonFilePath string) error {
 				warningCount += 1
 			}
 
-			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspection typeId='%s', message='%s' file='%s' SEVERITY='%s']\n", escapedTitle, formattedMessage, violator.ViolatorAssetPath, severityLevel))
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspection typeId='%s' message='%s' file='%s' SEVERITY='%s']\n", escapedTitle, formattedMessage, escapedAssetPath, severityLevel))
 			if err != nil {
 				return err
 			}
