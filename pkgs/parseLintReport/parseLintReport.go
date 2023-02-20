@@ -68,7 +68,7 @@ func ParseReport(jsonFilePath string) error {
 			if violations.RuleRecommendedAction == "" {
 				formattedMessage = fmt.Sprintf("%s - %s", violations.RuleGroup, violations.RuleDesc)
 			} else {
-				formattedMessage = fmt.Sprintf("%s - %s. Fix: %s", violations.RuleGroup, violations.RuleDesc, violations.RuleRecommendedAction)
+				formattedMessage = fmt.Sprintf("%s - %s Fix: %s", violations.RuleGroup, violations.RuleDesc, violations.RuleRecommendedAction)
 			}
 			// 0 = error, 1 = warn
 			if violations.RuleSeverity == 0 {
@@ -80,10 +80,12 @@ func ParseReport(jsonFilePath string) error {
 			}
 		}
 		if len(errors) > 0 {
-			_, err = fmt.Fprintf(w, "##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n"))
+			errorString := fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, EscapeTeamCityString(strings.Join(errors, "\n")))
+			_, err = fmt.Fprintf(w, errorString)
 		}
 		if len(warnings) > 0 {
-			_, err = fmt.Fprintf(w, "##teamcity[testFailed name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))
+			warningString := fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, EscapeTeamCityString(strings.Join(errors, "\n")))
+			_, err = fmt.Fprintf(w, warningString)
 		}
 
 		_, err = fmt.Fprintf(w, "##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath)
