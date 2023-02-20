@@ -74,7 +74,7 @@ func ParseReport(jsonFilePath string) error {
 		//var errors []string
 
 		for _, violation := range violator.Violations {
-			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspectionType id='%s' category='%s' name='%s' description='%s']\n", violator.ViolatorAssetName+violation.RuleTitle, violation.RuleTitle, violator.ViolatorAssetName, violation.RuleDesc))
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspectionType id='%s' category='%s' name='%s' description='%s']\n", violation.RuleTitle, "Lint Results", violation.RuleTitle, violation.RuleDesc))
 			if err != nil {
 				return err
 			}
@@ -98,7 +98,7 @@ func ParseReport(jsonFilePath string) error {
 				warningCount += 1
 			}
 
-			err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[inspection typeId='%s', message='%s' file='%s' SEVERITY='%s']\n", violator.ViolatorAssetName+violation.RuleTitle, formattedMessage, violator.ViolatorAssetPath, severityLevel)))
+			err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[inspection typeId='%s', message='%s' file='%s' SEVERITY='%s']\n", violation.RuleTitle, formattedMessage, violator.ViolatorAssetPath, severityLevel)))
 			if err != nil {
 				return err
 			}
