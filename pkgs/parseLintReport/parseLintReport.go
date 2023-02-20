@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/dimchansky/utfbom"
 	"github.com/urfave/cli/v2"
+	"io"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -32,17 +33,20 @@ type Violation struct {
 
 func EscapeTeamCityString(str string) string {
 	newString := strings.Replace(str, "|", "||", -1)
-	newString = strings.Replace(str, "'", "|'", -1)
-	newString = strings.Replace(str, "\u2019", "|'", -1)
-	newString = strings.Replace(str, "\u2018", "|'", -1)
-	newString = strings.Replace(str, "\r", "|r", -1)
-	newString = strings.Replace(str, "\n", "|n", -1)
-	newString = strings.Replace(str, "]", "|]", -1)
-	newString = strings.Replace(str, "[", "|[", -1)
-	newString = strings.Replace(str, "\u0085", "|x", -1)
-	newString = strings.Replace(str, "\u2028", "|l", -1)
-	newString = strings.Replace(str, "\u2029", "|p", -1)
+	newString = strings.Replace(newString, "'", "|'", -1)
+	newString = strings.Replace(newString, "\r", "|r", -1)
+	newString = strings.Replace(newString, "\n", "|n", -1)
+	newString = strings.Replace(newString, "]", "|]", -1)
+	newString = strings.Replace(newString, "[", "|[", -1)
 	return newString
+}
+
+func WriteTeamCityMsg(w io.Writer, str string) error {
+	_, err := fmt.Fprintf(w, EscapeTeamCityString(str))
+	if err != nil {
+		return cli.Exit(fmt.Errorf("error writing message: %s", err), 1)
+	}
+	return nil
 }
 
 func ParseReport(jsonFilePath string) error {
@@ -70,9 +74,9 @@ func ParseReport(jsonFilePath string) error {
 	}
 
 	for _, violator := range testResults.Violators {
-		_, err = fmt.Fprintf(w, "##teamcity[testStarted name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath)
+		err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testStarted name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath))
 		if err != nil {
-			return cli.Exit(fmt.Errorf("error writing message: %s", err), 1)
+			return err
 		}
 
 		var warnings []string
@@ -95,20 +99,36 @@ func ParseReport(jsonFilePath string) error {
 			}
 		}
 		if len(errors) > 0 {
-			errorString := EscapeTeamCityString(fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n")))
-			_, err = fmt.Fprintf(w, errorString)
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n")))
+			if err != nil {
+				return err
+			}
 		}
 		if len(warnings) > 0 {
-			warningString := EscapeTeamCityString(fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n")))
-			_, err = fmt.Fprintf(w, warningString)
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n")))
+			if err != nil {
+				return err
+			}
 		}
 
-		_, err = fmt.Fprintf(w, "##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath)
+		err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath))
+		if err != nil {
+			return err
+		}
 	}
 
-	_, err = fmt.Fprintf(w, "##teamcity[testSuiteFinished name='%s']\n", "Linter")
-	_, err = fmt.Fprintf(w, "##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Errors", errorCount)
-	_, err = fmt.Fprintf(w, "##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Warnings", warningCount)
+	err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testSuiteFinished name='%s']\n", "Linter"))
+	if err != nil {
+		return err
+	}
+	err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Errors", errorCount))
+	if err != nil {
+		return err
+	}
+	err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Warnings", warningCount))
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
