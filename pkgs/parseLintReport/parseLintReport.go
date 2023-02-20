@@ -68,59 +68,64 @@ func ParseReport(jsonFilePath string) error {
 	warningCount := 0
 
 	w := os.Stdout
-	_, err = fmt.Fprintf(w, "##teamcity[testSuiteStarted name='%s']\n", "Linter")
-	if err != nil {
-		return cli.Exit(fmt.Errorf("error writing message: %s", err), 1)
-	}
 
 	for _, violator := range testResults.Violators {
-		err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testStarted name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath))
-		if err != nil {
-			return err
-		}
+		//var warnings []string
+		//var errors []string
 
-		var warnings []string
-		var errors []string
+		for _, violation := range violator.Violations {
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspectionType id='%s' category='%s' name='%s' description='%s']\n", violator.ViolatorAssetName, violation.RuleTitle, violator.ViolatorAssetName, violation.RuleDesc))
+			if err != nil {
+				return err
+			}
 
-		for _, violations := range violator.Violations {
 			formattedMessage := ""
-			if violations.RuleRecommendedAction == "" {
-				formattedMessage = fmt.Sprintf("%s - %s", violations.RuleGroup, violations.RuleDesc)
+			severityLevel := ""
+
+			if violation.RuleRecommendedAction == "" {
+				formattedMessage = fmt.Sprintf("%s - %s", violation.RuleGroup, violation.RuleDesc)
 			} else {
-				formattedMessage = fmt.Sprintf("%s - %s. Fix: %s", violations.RuleGroup, violations.RuleDesc, violations.RuleRecommendedAction)
+				formattedMessage = fmt.Sprintf("%s - %s. Fix: %s", violation.RuleGroup, violation.RuleDesc, violation.RuleRecommendedAction)
 			}
 			// 0 = error, 1 = warn
-			if violations.RuleSeverity == 0 {
-				errors = append(errors, formattedMessage)
+			if violation.RuleSeverity == 0 {
+				//errors = append(errors, formattedMessage)
+				severityLevel = "ERROR"
 				errorCount += 1
 			} else {
-				warnings = append(warnings, formattedMessage)
+				//warnings = append(warnings, formattedMessage)
+				severityLevel = "WARNING"
 				warningCount += 1
 			}
-		}
-		if len(errors) > 0 {
-			err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n"))))
+
+			err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[inspection typeId='%s', message='%s' file='%s' SEVERITY='%s']\n", violator.ViolatorAssetName, formattedMessage, violator.ViolatorAssetPath, severityLevel)))
 			if err != nil {
 				return err
 			}
 		}
-		if len(warnings) > 0 {
-			err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))))
-			if err != nil {
-				return err
-			}
-		}
-
-		err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath))
-		if err != nil {
-			return err
-		}
+		//if len(errors) > 0 {
+		//	err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n"))))
+		//	if err != nil {
+		//		return err
+		//	}
+		//}
+		//if len(warnings) > 0 {
+		//	err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))))
+		//	if err != nil {
+		//		return err
+		//	}
+		//}
+		//
+		//err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath))
+		//if err != nil {
+		//	return err
+		//}
 	}
 
-	err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testSuiteFinished name='%s']\n", "Linter"))
-	if err != nil {
-		return err
-	}
+	//err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testSuiteFinished name='%s']\n", "Linter"))
+	//if err != nil {
+	//	return err
+	//}
 	err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Errors", errorCount))
 	if err != nil {
 		return err
