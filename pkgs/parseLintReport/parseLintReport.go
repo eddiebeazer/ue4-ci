@@ -42,7 +42,7 @@ func EscapeTeamCityString(str string) string {
 }
 
 func WriteTeamCityMsg(w io.Writer, str string) error {
-	_, err := fmt.Fprintf(w, EscapeTeamCityString(str))
+	_, err := fmt.Fprintf(w, str)
 	if err != nil {
 		return cli.Exit(fmt.Errorf("error writing message: %s", err), 1)
 	}
@@ -99,13 +99,13 @@ func ParseReport(jsonFilePath string) error {
 			}
 		}
 		if len(errors) > 0 {
-			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n")))
+			err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n"))))
 			if err != nil {
 				return err
 			}
 		}
 		if len(warnings) > 0 {
-			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n")))
+			err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))))
 			if err != nil {
 				return err
 			}
