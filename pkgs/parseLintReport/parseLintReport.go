@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/dimchansky/utfbom"
 	"github.com/urfave/cli/v2"
+	"io"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -32,17 +33,20 @@ type Violation struct {
 
 func EscapeTeamCityString(str string) string {
 	newString := strings.Replace(str, "|", "||", -1)
-	newString = strings.Replace(str, "'", "|'", -1)
-	newString = strings.Replace(str, "\u2019", "|'", -1)
-	newString = strings.Replace(str, "\u2018", "|'", -1)
-	newString = strings.Replace(str, "\r", "|r", -1)
-	newString = strings.Replace(str, "\n", "|n", -1)
-	newString = strings.Replace(str, "]", "|]", -1)
-	newString = strings.Replace(str, "[", "|[", -1)
-	newString = strings.Replace(str, "\u0085", "|x", -1)
-	newString = strings.Replace(str, "\u2028", "|l", -1)
-	newString = strings.Replace(str, "\u2029", "|p", -1)
+	newString = strings.Replace(newString, "'", "|'", -1)
+	newString = strings.Replace(newString, "\r", "|r", -1)
+	newString = strings.Replace(newString, "\n", "|n", -1)
+	newString = strings.Replace(newString, "]", "|]", -1)
+	newString = strings.Replace(newString, "[", "|[", -1)
 	return newString
+}
+
+func WriteTeamCityMsg(w io.Writer, str string) error {
+	_, err := fmt.Fprintf(w, str)
+	if err != nil {
+		return cli.Exit(fmt.Errorf("error writing message: %s", err), 1)
+	}
+	return nil
 }
 
 func ParseReport(jsonFilePath string) error {
@@ -64,51 +68,78 @@ func ParseReport(jsonFilePath string) error {
 	warningCount := 0
 
 	w := os.Stdout
-	_, err = fmt.Fprintf(w, "##teamcity[testSuiteStarted name='%s']\n", "Linter")
-	if err != nil {
-		return cli.Exit(fmt.Errorf("error writing message: %s", err), 1)
-	}
 
 	for _, violator := range testResults.Violators {
-		_, err = fmt.Fprintf(w, "##teamcity[testStarted name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath)
-		if err != nil {
-			return cli.Exit(fmt.Errorf("error writing message: %s", err), 1)
-		}
+		//var warnings []string
+		//var errors []string
 
-		var warnings []string
-		var errors []string
+		for _, violation := range violator.Violations {
+			escapedTitle := EscapeTeamCityString(violation.RuleTitle)
+			escapedDescription := EscapeTeamCityString(violation.RuleDesc)
+			escapedAssetPath := EscapeTeamCityString(violator.ViolatorAssetPath)
 
-		for _, violations := range violator.Violations {
-			formattedMessage := ""
-			if violations.RuleRecommendedAction == "" {
-				formattedMessage = fmt.Sprintf("%s - %s", violations.RuleGroup, violations.RuleDesc)
-			} else {
-				formattedMessage = fmt.Sprintf("%s - %s. Fix: %s", violations.RuleGroup, violations.RuleDesc, violations.RuleRecommendedAction)
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspectionType id='%s' category='%s' name='%s' description='%s']\n", escapedTitle, "Lint Results", escapedTitle, escapedDescription))
+			if err != nil {
+				return err
 			}
+
+			formattedMessage := ""
+			severityLevel := ""
+
+			if violation.RuleRecommendedAction == "" {
+				formattedMessage = fmt.Sprintf("%s - %s", violation.RuleGroup, violation.RuleDesc)
+			} else {
+				formattedMessage = fmt.Sprintf("%s - %s. Fix: %s", violation.RuleGroup, violation.RuleDesc, violation.RuleRecommendedAction)
+			}
+			formattedMessage = EscapeTeamCityString(formattedMessage)
+
 			// 0 = error, 1 = warn
-			if violations.RuleSeverity == 0 {
-				errors = append(errors, formattedMessage)
+			if violation.RuleSeverity == 0 {
+				//errors = append(errors, formattedMessage)
+				severityLevel = "ERROR"
 				errorCount += 1
 			} else {
-				warnings = append(warnings, formattedMessage)
+				//warnings = append(warnings, formattedMessage)
+				severityLevel = "WARNING"
 				warningCount += 1
 			}
-		}
-		if len(errors) > 0 {
-			errorString := EscapeTeamCityString(fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n")))
-			_, err = fmt.Fprintf(w, errorString)
-		}
-		if len(warnings) > 0 {
-			warningString := EscapeTeamCityString(fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n")))
-			_, err = fmt.Fprintf(w, warningString)
-		}
 
-		_, err = fmt.Fprintf(w, "##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath)
+			err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[inspection typeId='%s' message='%s' file='%s' SEVERITY='%s']\n", escapedTitle, formattedMessage, escapedAssetPath, severityLevel))
+			if err != nil {
+				return err
+			}
+		}
+		//if len(errors) > 0 {
+		//	err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testFailed name='%s: %s' message='%s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(errors, "\n"))))
+		//	if err != nil {
+		//		return err
+		//	}
+		//}
+		//if len(warnings) > 0 {
+		//	err = WriteTeamCityMsg(w, EscapeTeamCityString(fmt.Sprintf("##teamcity[testStdOut name='%s: %s' out='warning: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath, strings.Join(warnings, "\n"))))
+		//	if err != nil {
+		//		return err
+		//	}
+		//}
+		//
+		//err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testFinished name='%s: %s']\n", violator.ViolatorAssetName, violator.ViolatorAssetPath))
+		//if err != nil {
+		//	return err
+		//}
 	}
 
-	_, err = fmt.Fprintf(w, "##teamcity[testSuiteFinished name='%s']\n", "Linter")
-	_, err = fmt.Fprintf(w, "##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Errors", errorCount)
-	_, err = fmt.Fprintf(w, "##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Warnings", warningCount)
+	//err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[testSuiteFinished name='%s']\n", "Linter"))
+	//if err != nil {
+	//	return err
+	//}
+	err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Errors", errorCount))
+	if err != nil {
+		return err
+	}
+	err = WriteTeamCityMsg(w, fmt.Sprintf("##teamcity[buildStatisticValue key='%s' value='%d']\n", "Lint Warnings", warningCount))
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
